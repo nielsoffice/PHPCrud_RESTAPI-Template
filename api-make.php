@@ -59,5 +59,5 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
  ], 'make_api' );
 
-
+ // closed public connection
  $wine_db->close();
