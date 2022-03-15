@@ -32,9 +32,9 @@ Resful-api using PHPCrud snippet
  );
 
  INSERT INTO `friends` (`friend_id`, `friend_category_id`, `name`, `email`, `relationship`) VALUES
- (1, 1, 'Jhon', 'jhon@mail.com','School'),
- (2, 2, 'Lee', 'lee@mail.com','Church'),
- (3, 3, 'Sai', 'sai@mail.com','Work'),
+ (1, 1, 'Nikkie The Drummer', 'nikkiTheDrumer@mail.com','School'),
+ (2, 2, 'Japz The Pastor ', 'japzThePastor@mail.com','Church'),
+ (3, 3, 'Niel Music Director', 'nielMusicDirector@mail.com','Work'),
 ```
 
 <h2>Thanks To:</h2>
