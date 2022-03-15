@@ -19,7 +19,6 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
  $api_Delete = new Class extends Vanilla {
 
    /**
-    * @var 
     * @property Initialized
     * Defined request new data input update through api
     * @since 03.15.2022
