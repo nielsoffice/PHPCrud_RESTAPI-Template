@@ -1,5 +1,5 @@
 # PHPCrud_RESTAPI-Template
-Resful-api using PHPCrud snippet 
+Rest-api using PHPCrud snippet 
 
 ```PHP
 // Create Basic Authentication 
