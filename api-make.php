@@ -8,56 +8,98 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 <?php require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'library/PHPWine/PHPWine.php'; ?>
 <?php 
 
- use \PHPWine\VanillaFlavour\Plugins\PHPCrud\Crud\Vanilla;
-
- $phpCrud    = new Vanilla();
+ use \PHPWine\VanillaFlavour\Plugins\PHPCrud\Crud\Vanilla; $phpCrud = new Vanilla;
 
  // Request vanilla public connection 
  $wine_db = $phpCrud->wine_db();
 
- if( $wine_db === false ) { die("ERROR: Could not connect. " . $wine_db->connect_error); }
- 
- $data = json_decode(file_get_contents("php://input"));
+ // Validate database then Make wine 
+ if( $wine_db === false ) { die("ERROR: Could not connect. " . $wine_db->connect_error); } 
 
- function make_api( $make_api ) {
+ $api_make = new class extends Vanilla {
+    
+  /**
+   * @var 
+   * @property Initialized
+   * Defined request new data input through api
+   * @since 03.15.2022
+   **/
+   private $request;
   
-    if( $make_api ) {
-
-        /**
-         * Incase reponsed code is 200 means okay!
-         * **/
-        http_response_code(200);  
-        // execute do process insert data into database response message output
-        echo json_encode(
-            array('message' => 'Post Created')
-          );
-    
-        } else if( http_response_code(503) ) {
-        // execute api error message to the browser  
-           echo json_encode(
-            array('message' => 'Post Not Created')
-          );
+   // processing new data 
+   public function __construct()
+   {
       
-       } else {    
+      // Run operation !
+      function make_api(  $make_api  ) {
+
+       if( $make_api ) {
+
+         /**
+          * Incase reponsed code is 200 means okay!
+          **/
+         http_response_code(200);  
+         // execute do process insert data into database response message output
+         echo json_encode(
+             array('message' => 'Post Created')
+           );
      
-        /**
-         * Incase all fields are required and some are empty !
-         * **/
-         http_response_code(400);    
-        // execute api error message to the browser  
-         echo json_encode(array("message" => "Unable to create a post some field are empty "));
-     } 
+         } else if( http_response_code(503) ) {
+         // execute api error message to the browser  
+            echo json_encode(
+             array('message' => 'Post Not Created')
+           );
+       
+        } else {    
+      
+         /**
+          * Incase all fields are required and some are empty !
+          **/
+          http_response_code(400);    
+         // execute api error message to the browser  
+          echo json_encode(array("message" => "Unable to create a post some field are empty "));
+      } 
+ 
+      return false;
+ 
+   }
 
- }
+   $this->decode();
+   $this->vanilla_make(Vanilla::MAKE);
+      
+   }
 
- $make_api    = new Vanilla(Vanilla::MAKE, 'friends', [ 
+   // do make new request data through api
+   private function decode() : void
+   {
+       $this->request = json_decode(file_get_contents("php://input"));
+   }
+   
+   // do make new data through api
+   private function vanilla_make( string $vanilla) : void
+   {
+         new Vanilla( $vanilla, 'friends', [ 
     
-    'name'               => htmlspecialchars( strip_tags( trim( $data->name ))),
-    'email'              => htmlspecialchars( strip_tags( trim( $data->email ))),
-    'relationship'       => htmlspecialchars( strip_tags( trim( $data->relationship ))),
-    'friend_category_id' => htmlspecialchars( strip_tags( trim( $data->friend_category_id )))
+         'name'               => htmlspecialchars( strip_tags( trim( $this->request->name ))),
+         'email'              => htmlspecialchars( strip_tags( trim( $this->request->email ))),
+         'relationship'       => htmlspecialchars( strip_tags( trim( $this->request->relationship ))),
+         'friend_category_id' => htmlspecialchars( strip_tags( trim( $this->request->friend_category_id )))
+     
+      ], 'make_api' );
+     
+   }
 
- ], 'make_api' );
-
- // closed public connection
+ };
+ 
+ // closed database create data
  $wine_db->close();
+
+  /**
+  * 
+  * Would you like me to treat a cake and coffee ?
+  * Become a donor, Because with you! We can build more...
+  * Donate:
+  * GCash : +639650332900
+  * Paypal account: syncdevprojects@gmail.com
+  * 
+ **/ 
