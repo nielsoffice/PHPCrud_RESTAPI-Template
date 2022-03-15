@@ -2,6 +2,31 @@
 Resful-api using PHPCrud snippet 
 
 ```PHP
+// Create Basic Authentication 
+if( !isset($_SERVER['PHP_AUTH_USER'] ) ) :
+   
+    header("WWW-Authenticate: Basic realm=\"Private Data\"");
+    header("HTTP/1.0 401 Unauthorized");
+    print("Credential required | [ username : password ] ");
+
+else :
+
+     if( ($_SERVER['PHP_AUTH_USER'] == 'niel' && ($_SERVER['PHP_AUTH_PW'] == '123')) ) {
+
+        // api class goes here
+        print("Welcome to data!");
+
+    } else {
+        
+        // forbid accessing api !
+        header("HTTP/1.0 401 Unauthorized");
+        return ;
+    }
+
+endif;
+
+```
+```PHP
  // Header: 
  Key: Content-Type 
  Value: application/json
