@@ -61,6 +61,8 @@ endif;
  (2, 2, 'Japz The Pastor ', 'japzThePastor@mail.com','Church'),
  (3, 3, 'Niel Music Director', 'nielMusicDirector@mail.com','Work'),
 ```
+Download <a href="https://github.com/nielsofficeofficial/PHPWine"> PHPWine > </a> <br />
+Download <a href="https://github.com/nielsofficeofficial/PHPCrud"> PHPCrud > </a>
 
 <h2>Thanks To:</h2>
 <h5>
