@@ -13,7 +13,10 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
  // Request vanilla public connection 
  $wine_db = $phpCrud->wine_db();
 
- Class Delete extends Vanilla {
+  // Validate database then remove single data wine 
+  if( $wine_db === false ) { die("ERROR: Could not connect. " . $wine_db->connect_error); }
+
+ $api_Delete = new Class extends Vanilla {
 
    /**
     * @var 
@@ -78,10 +81,10 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
      
    }
 
-  }
+  };
  
- // Validate database then remove single data wine 
- if( $wine_db === false ) { die("ERROR: Could not connect. " . $wine_db->connect_error); } $delete_api = new Delete; $wine_db->close();
+// closed database delete selected by id api data 
+ $wine_db->close();
 
  /**
   * 
