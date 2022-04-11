@@ -3,20 +3,9 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With'); ?>
+header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With'); 
 
-<?php require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'library/PHPWine/PHPWine.php'; ?>
-<?php 
-
- use \PHPWine\VanillaFlavour\Plugins\PHPCrud\Crud\Vanilla; $phpCrud = new Vanilla;
-
- // Request vanilla public connection 
- $wine_db = $phpCrud->wine_db();
-
-  // Validate database then remove single data wine 
-  if( $wine_db === false ) { die("ERROR: Could not connect. " . $wine_db->connect_error); }
-
- $api_Delete = new Class extends Vanilla {
+ $api_Delete = new Class {
 
    /**
     * @property Initialized
@@ -24,13 +13,43 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
     * @since 03.15.2022
     **/
    private $request;
+   private $init;
   
    public function __construct()
    {
-
-      function delete_api( $delete_api ) {
   
-         if( $delete_api ) {
+      $this->php_wine('autoload');
+
+      $this->init = new PHPWineVanillaFlavour\Plugins\PHPCrud\Crud\Vanilla;
+   
+      $this->decode();
+
+      $this->vanilla_delete($this->init::DELETE);
+      
+   }
+
+   // do make new request data through api
+   private function decode() : void
+   {
+      $this->request = json_decode(file_get_contents("php://input"));
+   }
+  
+   // select data and delete via id through api
+   private function vanilla_delete( string $vanilla ) : void
+   {
+
+     // Request vanilla public connection 
+     $this->init->wine_db();
+
+     // Validate database then Read wine 
+     if( $this->init === false ) { die("ERROR: Could not connect. " . $this->init->connect_error); }
+
+      new PHPWineVanillaFlavour\Plugins\PHPCrud\Crud\Vanilla( $vanilla , '', [ 
+    
+         'friends',
+         'condition' => [" WHERE friend_id = {$this->request->friend_id} "]
+     
+      ], function ( $delete_api ) { if( $delete_api ) {
            
              /**
               * Incase reponsed code is 200 means okay!
@@ -54,36 +73,20 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
            
           } 
      
-      }
-
-      $this->decode();
-      $this->vanilla_delete(Vanilla::DELETE);
-      
+      });
+   
+     // closed database connection read
+     $this->init->wine_db()->close();
+     
    }
 
-   // do make new request data through api
-   private function decode() : void
-   {
-      $this->request = json_decode(file_get_contents("php://input"));
-   }
+   private function php_wine(string $autoload) : void {
+
+      require dirname(__FILE__) . DIRECTORY_SEPARATOR .'vendor/' . $autoload.'.'.'php';
   
-   // select data and delete via id through api
-   private function vanilla_delete( string $vanilla ) : void
-   {
-
-      new Vanilla( $vanilla , '', [ 
-    
-         'friends',
-         'condition' => [" WHERE friend_id = {$this->request->friend_id} "]
-     
-      ], 'delete_api' );
-     
-   }
+     }
 
   };
- 
-// closed database delete selected by id api data 
- $wine_db->close();
 
  /**
   * 
