@@ -118,7 +118,7 @@ endif;
     return [
 
       'debug'          => false,
-      'query'          => [ 'mixed' => [ "SQL goes here" ] ]
+      'query'          => ['mixed' => [ "SQL goes here" ] ]
       
     ];
 
@@ -138,7 +138,7 @@ endif;
     return [
 
       'debug'          => false,
-      'query'          => [ 'mixed' => [ "SQL goes here" ] ]
+      'query'          => ['mixed' => [ "SQL goes here" ] ]
     
     ];
 
