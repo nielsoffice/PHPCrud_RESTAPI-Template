@@ -28,7 +28,7 @@ endif;
 ```
 ```PHP
  // Header: 
- Key: Content-Type 
+ Key: Content-Type  
  Value: application/json
  ```
  ```SQL
