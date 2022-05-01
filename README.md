@@ -77,7 +77,9 @@ endif;
     return [
 
       'debug'          => false,
-      'query'          => [ 'mixed' => [ "SQL goes here" ];
+      'query'          => ['mixed' => [ "SQL goes here" ] ] 
+      
+    ];
 
   }], function() { ...  }
   
@@ -96,8 +98,10 @@ endif;
     return [
 
       'debug'          => false,
-      'query'          => [ 'mixed' => [ "SQL goes here" ];
-
+      'query'          => ['mixed' => [ "SQL goes here" ] ]
+    
+    ];
+    
   }], function() { ...  }
   
   );   
@@ -114,7 +118,9 @@ endif;
     return [
 
       'debug'          => false,
-      'query'          => [ 'mixed' => [ "SQL goes here" ];
+      'query'          => [ 'mixed' => [ "SQL goes here" ] ]
+      
+    ];
 
   }], function() { ...  }
   
@@ -132,7 +138,9 @@ endif;
     return [
 
       'debug'          => false,
-      'query'          => [ 'mixed' => [ "SQL goes here" ];
+      'query'          => [ 'mixed' => [ "SQL goes here" ] ]
+    
+    ];
 
   }], function() { ...  }
   
