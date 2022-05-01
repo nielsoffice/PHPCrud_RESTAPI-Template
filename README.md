@@ -11,7 +11,7 @@ if( !isset($_SERVER['PHP_AUTH_USER'] ) ) :
 
 else :
 
-     if( ($_SERVER['PHP_AUTH_USER'] == 'niel' && ($_SERVER['PHP_AUTH_PW'] == 'admin')) ) {
+     if( ($_SERVER['PHP_AUTH_USER'] == 'niel' && ($_SERVER['PHP_AUTH_PW'] == 'admin')) ) { 
 
         // api class goes here
         print("Welcome to data!");
