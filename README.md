@@ -61,6 +61,83 @@ endif;
  (2, 2, 'Japz The Pastor ', 'japzThePastor@mail.com','Church'),
  (3, 3, 'Niel Music Director', 'nielMusicDirector@mail.com','Work'),
 ```
+
+```PHP
+  
+   // v1.3 Pre-released
+ 
+  /**
+   * Defined : Create api_wine_multi_server / multi server or switch to databases
+   * @since wine v1.3.1.1
+   * @since vanilla v1.3.0.0
+   * @since 04.30.2022
+   **/ 
+  api_wine_multi_server( new mysqli('localhost','root','','multiserver'), [ 'api_wine_makes' => function() {
+      
+    return [
+
+      'debug'          => false,
+      'query'          => [ 'mixed' => [ "SQL goes here" ];
+
+  }], function() { ...  }
+  
+  );
+```
+
+```PHP
+ /**
+   * Defined : Read api_wine_multi_server / multi server or switch to databases
+   * @since wine v1.3.1.1
+   * @since vanilla v1.3.0.0
+   * @since 04.30.2022
+   **/   
+  api_wine_multi_server( new mysqli('localhost','root','','multiserver'), [ 'api_wine_fetch' => function() {
+      
+    return [
+
+      'debug'          => false,
+      'query'          => [ 'mixed' => [ "SQL goes here" ];
+
+  }], function() { ...  }
+  
+  );   
+```
+```PHP
+  /**
+   * Defined : Update api_wine_multi_server / multi server or switch to databases
+   * @since wine v1.3.1.1
+   * @since vanilla v1.3.0.0
+   * @since 04.30.2022
+   **/ 
+  api_wine_multi_server( new mysqli('localhost','root','','multiserver'), [ 'api_wine_put' => function() {
+      
+    return [
+
+      'debug'          => false,
+      'query'          => [ 'mixed' => [ "SQL goes here" ];
+
+  }], function() { ...  }
+  
+  );   
+```
+```PHP
+  /**
+   * Defined : Delete api_wine_multi_server / multi server or switch to databases
+   * @since wine v1.3.1.1
+   * @since vanilla v1.3.0.0
+   * @since 04.30.2022
+   **/ 
+  api_wine_multi_server( new mysqli('localhost','root','','multiserver'), [ 'api_wine_delete' => function() {
+      
+    return [
+
+      'debug'          => false,
+      'query'          => [ 'mixed' => [ "SQL goes here" ];
+
+  }], function() { ...  }
+  
+  );   
+```
 Download <a href="https://github.com/nielsofficeofficial/PHPWine"> PHPWine > </a> <br />
 Download <a href="https://github.com/nielsofficeofficial/PHPCrud"> PHPCrud > </a>
 
