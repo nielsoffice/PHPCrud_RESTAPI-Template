@@ -91,7 +91,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
           echo json_encode(array("message" => "Unable to create a post some field are empty "));
       } 
  
-      return [];
+      return false; // api or all make bool return false when empty! 
  
     });
 
