@@ -50,7 +50,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
         return [
 
            'debug' => false, 
-           'query' => [ 'mixed' => [ 
+           'query' => ['mixed' => [ 
        
               " UPDATE friends 
                 SET  
