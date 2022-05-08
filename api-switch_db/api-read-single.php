@@ -32,7 +32,7 @@
   
         'debug'   => false,
   
-        'query'   => [ 'mixed' => [ 
+        'query'   => ['mixed' => [ 
           
             "SELECT fc.name as relastionship_name, 
                             
