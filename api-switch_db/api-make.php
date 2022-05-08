@@ -14,6 +14,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
    * @since 03.15.2022
    **/
    private $request;
+  
    private $init;
   
    // processing new data 
@@ -49,16 +50,25 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
          return [
 
             'debug' => false, 
-            'query' => [ 'mixed' => [ 
+            'query' => ['mixed' => [ 
         
                "INSERT 
-                INTO friends (  name , email , relationship , friend_category_id  )  
-               
+                INTO friends (  
+                   
+                     name , 
+                     email , 
+                     relationship , 
+                     friend_category_id  
+
+                )  
                 VALUES  ( 
 
-                    '".$name."', '".$email."', '".$relationship."', '".$friend_category_id."'
+                    '".$name."', 
+                    '".$email."', 
+                    '".$relationship."', 
+                    '".$friend_category_id."'
               
-                )
+                 )
             
             "]],
 
